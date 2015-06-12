@@ -136,7 +136,6 @@
 		2668D6E41AB62274009630D3 /* flag_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2668D6E31AB62274009630D3 /* flag_placeholder.png */; };
 		266D5B9F1AB5C013003F9E30 /* COCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 266D5B9E1AB5C013003F9E30 /* COCAlertView.m */; };
 		2690B65E1ABE213E000ACD65 /* countries_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 2690B65D1ABE213E000ACD65 /* countries_list.json */; };
-		26CE801F1ACFE8EB00FC7606 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26CE801E1ACFE8EB00FC7606 /* Crashlytics.framework */; };
 		26DB69311B013B6F006AD5C9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DB69301B013B6F006AD5C9 /* CoreLocation.framework */; };
 		26DB69321B013B95006AD5C9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22744043106F33FC006EC466 /* Security.framework */; };
 		26DB69361B013BE1006AD5C9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DB69351B013BE1006AD5C9 /* Accounts.framework */; };
@@ -301,22 +300,33 @@
 		6E360D351B0E2A37009A5D55 /* chat_bubble_outgoing_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E360D341B0E2A37009A5D55 /* chat_bubble_outgoing_triangle.png */; };
 		6E360D371B10DAF5009A5D55 /* sms-contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E360D361B10DAF5009A5D55 /* sms-contacts.png */; };
 		6E360D3A1B10DFD1009A5D55 /* SMSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E360D391B10DFD1009A5D55 /* SMSButton.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6E503A601B09D5D10081DB97 /* SMSActivationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A5B1B09D5D10081DB97 /* SMSActivationViewController.m */; };
+		6E503A601B09D5D10081DB97 /* SMSActivationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A5B1B09D5D10081DB97 /* SMSActivationViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6E503A611B09D5D10081DB97 /* SMSActivationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E503A5C1B09D5D10081DB97 /* SMSActivationViewController.xib */; };
 		6E503A661B09D5E20081DB97 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A651B09D5E20081DB97 /* ProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6E503A691B09D6C70081DB97 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A681B09D6C70081DB97 /* CoreDataManager.m */; };
+		6E503A691B09D6C70081DB97 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A681B09D6C70081DB97 /* CoreDataManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6E503A6C1B09D6F90081DB97 /* SMS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A6A1B09D6F90081DB97 /* SMS.xcdatamodeld */; };
 		6E503A741B09DBA30081DB97 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E503A731B09DBA30081DB97 /* CoreData.framework */; };
-		6E503A7E1B09E4AD0081DB97 /* SMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A7C1B09E4AD0081DB97 /* SMSTableViewController.m */; };
+		6E503A7E1B09E4AD0081DB97 /* SMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E503A7C1B09E4AD0081DB97 /* SMSTableViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6E503A7F1B09E4AD0081DB97 /* SMSTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E503A7D1B09E4AD0081DB97 /* SMSTableViewController.xib */; };
-		6E5767B51B0AEEEA0060D464 /* SMSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5767B31B0AEEEA0060D464 /* SMSTableViewCell.m */; };
+		6E5767B51B0AEEEA0060D464 /* SMSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5767B31B0AEEEA0060D464 /* SMSTableViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6E5767B61B0AEEEA0060D464 /* SMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5767B41B0AEEEA0060D464 /* SMSTableViewCell.xib */; };
-		6EBB9D871B0D5B7F0017B5FC /* SMSConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB9D851B0D5B7F0017B5FC /* SMSConversationViewController.m */; };
+		6EBB9D871B0D5B7F0017B5FC /* SMSConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB9D851B0D5B7F0017B5FC /* SMSConversationViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6EBB9D881B0D5B7F0017B5FC /* SMSConversationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EBB9D861B0D5B7F0017B5FC /* SMSConversationViewController.xib */; };
+		6EE56D481B25CA5100D60D4A /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE56D451B25CA5100D60D4A /* libc++.dylib */; };
+		6EE56D491B25CA5100D60D4A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE56D461B25CA5100D60D4A /* Fabric.framework */; };
+		6EE56D4A1B25CA5100D60D4A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE56D471B25CA5100D60D4A /* Crashlytics.framework */; };
 		70571E1A13FABCB000CDD3C2 /* rootca.pem in Resources */ = {isa = PBXBuildFile; fileRef = 70571E1913FABCB000CDD3C2 /* rootca.pem */; };
 		7066FC0C13E830E400EFC6DC /* libvpx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7066FC0B13E830E400EFC6DC /* libvpx.a */; };
 		70E542F313E147E3002BA2C0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E542F213E147E3002BA2C0 /* OpenGLES.framework */; };
 		70E542F513E147EB002BA2C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E542F413E147EB002BA2C0 /* QuartzCore.framework */; };
+		C681BB201AE822760063B3A5 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = C681BB1F1AE822760063B3A5 /* welcome.png */; };
+		C681BB221AE823C60063B3A5 /* welcome_login_default.png in Resources */ = {isa = PBXBuildFile; fileRef = C681BB211AE823C60063B3A5 /* welcome_login_default.png */; };
+		C681BB241AE825090063B3A5 /* welcome_signup_default.png in Resources */ = {isa = PBXBuildFile; fileRef = C681BB231AE825090063B3A5 /* welcome_signup_default.png */; };
+		C681BB261AE825B90063B3A5 /* original.png in Resources */ = {isa = PBXBuildFile; fileRef = C681BB251AE825B90063B3A5 /* original.png */; };
+		C6863C8D1AF5608300652820 /* WizardViews_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6863C8C1AF5608300652820 /* WizardViews_2.xib */; };
+		C6AD589F1AF26C4B00DD5375 /* welcome-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6AD589D1AF26C4B00DD5375 /* welcome-568h@2x.png */; };
+		C6AD58A01AF26C4B00DD5375 /* welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6AD589E1AF26C4B00DD5375 /* welcome@2x.png */; };
+		C6BECC6A1B0F2BA400A6B703 /* signup_back_default.png in Resources */ = {isa = PBXBuildFile; fileRef = C6BECC691B0F2BA400A6B703 /* signup_back_default.png */; };
 		C90FAA7915AF54E6002091CB /* HistoryDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FAA7715AF54E6002091CB /* HistoryDetailsViewController.m */; };
 		C9C8254315AE204D00D493FA /* options_add_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C8253F15AE204D00D493FA /* options_add_disabled.png */; };
 		C9C8254515AE204D00D493FA /* options_transfer_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C8254015AE204D00D493FA /* options_transfer_disabled.png */; };
@@ -871,7 +881,6 @@
 		F088488A19FF8C41007FFCF3 /* UIContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F088488D19FF8C41007FFCF3 /* UIContactCell.xib */; };
 		F08BDC3D1A35E60F006210C9 /* liblinphonetester.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BB8C0F193623F200974404 /* liblinphonetester.a */; };
 		F08D468D1AA86849001E8CB5 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B026F21AA710AF00FF49F7 /* libiconv.dylib */; };
-		F08F118519C09C6B007D70C2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F03A9B3318C0CF7000C4D7FE /* XCTest.framework */; };
 		F08F118619C09C6B007D70C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		F08F118719C09C6B007D70C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		F08F118D19C09C6B007D70C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F08F118B19C09C6B007D70C2 /* InfoPlist.strings */; };
@@ -1098,7 +1107,6 @@
 		1D3623250D0F684500981E51 /* LinphoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinphoneAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* linphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		1FE76362DA6217E7341ED1DF /* libPods-KifTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KifTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		220FAD2910765B400068D98F /* libgsm.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgsm.a; path = "liblinphone-sdk/apple-darwin/lib/libgsm.a"; sourceTree = "<group>"; };
 		220FAD2C10765B400068D98F /* libortp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libortp.a; path = "liblinphone-sdk/apple-darwin/lib/libortp.a"; sourceTree = "<group>"; };
 		220FAD2F10765B400068D98F /* libspeex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspeex.a; path = "liblinphone-sdk/apple-darwin/lib/libspeex.a"; sourceTree = "<group>"; };
@@ -1211,12 +1219,9 @@
 		266D5B9D1AB5C012003F9E30 /* COCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COCAlertView.h; sourceTree = "<group>"; };
 		266D5B9E1AB5C013003F9E30 /* COCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COCAlertView.m; sourceTree = "<group>"; };
 		2690B65D1ABE213E000ACD65 /* countries_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = countries_list.json; path = Resources/countries_list.json; sourceTree = "<group>"; };
-		26CE801E1ACFE8EB00FC7606 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26DB69301B013B6F006AD5C9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		26DB69351B013BE1006AD5C9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		26DB69371B013BEB006AD5C9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		26DB695D1B014425006AD5C9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		26DB695F1B01443A006AD5C9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		26DB69881B015019006AD5C9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		26E7F2E71A816E200033D3C0 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
 		26E7F2E81A816E200033D3C0 /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
@@ -1422,11 +1427,22 @@
 		6EBB9D841B0D5B7F0017B5FC /* SMSConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSConversationViewController.h; sourceTree = "<group>"; };
 		6EBB9D851B0D5B7F0017B5FC /* SMSConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSConversationViewController.m; sourceTree = "<group>"; };
 		6EBB9D861B0D5B7F0017B5FC /* SMSConversationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSConversationViewController.xib; sourceTree = "<group>"; };
+		6EE56D451B25CA5100D60D4A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		6EE56D461B25CA5100D60D4A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		6EE56D471B25CA5100D60D4A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		70571E1913FABCB000CDD3C2 /* rootca.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rootca.pem; path = "liblinphone-sdk/apple-darwin/share/linphone/rootca.pem"; sourceTree = "<group>"; };
 		7066FC0B13E830E400EFC6DC /* libvpx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvpx.a; path = "liblinphone-sdk/apple-darwin/lib/libvpx.a"; sourceTree = "<group>"; };
 		70E542F213E147E3002BA2C0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		70E542F413E147EB002BA2C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* linphone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "linphone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C681BB1F1AE822760063B3A5 /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = SOURCE_ROOT; };
+		C681BB211AE823C60063B3A5 /* welcome_login_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = welcome_login_default.png; path = Classes/welcome_login_default.png; sourceTree = SOURCE_ROOT; };
+		C681BB231AE825090063B3A5 /* welcome_signup_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_signup_default.png; sourceTree = SOURCE_ROOT; };
+		C681BB251AE825B90063B3A5 /* original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = original.png; sourceTree = SOURCE_ROOT; };
+		C6863C8C1AF5608300652820 /* WizardViews_2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WizardViews_2.xib; sourceTree = "<group>"; };
+		C6AD589D1AF26C4B00DD5375 /* welcome-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		C6AD589E1AF26C4B00DD5375 /* welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome@2x.png"; sourceTree = SOURCE_ROOT; };
+		C6BECC691B0F2BA400A6B703 /* signup_back_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup_back_default.png; sourceTree = "<group>"; };
 		C90FAA7615AF54E6002091CB /* HistoryDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDetailsViewController.h; sourceTree = "<group>"; };
 		C90FAA7715AF54E6002091CB /* HistoryDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDetailsViewController.m; sourceTree = "<group>"; };
 		C9B3A6FD15B485DB006F52EE /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
@@ -2025,7 +2041,6 @@
 		F0022B081A370915009B51FD /* messages.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = messages.db; path = submodules/linphone/tester/messages.db; sourceTree = SOURCE_ROOT; };
 		F0181B6B18BF7B1200A9A357 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F01A77EA18ED989B00E287CA /* shortring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shortring.caf; path = Resources/shortring.caf; sourceTree = "<group>"; };
-		F03A9B3318C0CF7000C4D7FE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F03A9B7E18C0D9C900C4D7FE /* libcunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcunit.a; path = "liblinphone-sdk/apple-darwin/lib/libcunit.a"; sourceTree = "<group>"; };
 		F03A9B9418C0DAE100C4D7FE /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		F03A9B9718C0DB6F00C4D7FE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -2242,6 +2257,7 @@
 				F05BAA621A5D594E00411815 /* libz.dylib in Frameworks */,
 				1560821F18EEF26100765332 /* libmsopenh264.a in Frameworks */,
 				22509042196BD902007863F6 /* libopenh264.a in Frameworks */,
+				6EE56D4A1B25CA5100D60D4A /* Crashlytics.framework in Frameworks */,
 				15017E701773578400784ACB /* libxml2.a in Frameworks */,
 				22AF73C21754C0D100BE8398 /* libopus.a in Frameworks */,
 				57B0E360173C010400A476B8 /* libpolarssl.a in Frameworks */,
@@ -2253,6 +2269,7 @@
 				22B5F03510CE6B2F00777D97 /* AddressBook.framework in Frameworks */,
 				22B5EFA310CE50BD00777D97 /* AddressBookUI.framework in Frameworks */,
 				22405EEE1600B4E400B92522 /* AssetsLibrary.framework in Frameworks */,
+				6EE56D491B25CA5100D60D4A /* Fabric.framework in Frameworks */,
 				2274402F106F335E006EC466 /* AudioToolbox.framework in Frameworks */,
 				224567C2107B968500F10948 /* AVFoundation.framework in Frameworks */,
 				228697C411AC29B800E9E0CA /* CFNetwork.framework in Frameworks */,
@@ -2292,9 +2309,9 @@
 				220FAD3910765B400068D98F /* libspeexdsp.a in Frameworks */,
 				226183AE1472527D0037138E /* libsrtp.a in Frameworks */,
 				226183AD1472527D0037138E /* libSKP_SILK_SDK.a in Frameworks */,
-				26CE801F1ACFE8EB00FC7606 /* Crashlytics.framework in Frameworks */,
 				22276E8513C73D3100210156 /* libswscale.a in Frameworks */,
 				7066FC0C13E830E400EFC6DC /* libvpx.a in Frameworks */,
+				6EE56D481B25CA5100D60D4A /* libc++.dylib in Frameworks */,
 				22AA8AFD13D7125600B30535 /* libx264.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2304,7 +2321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F08BDC3D1A35E60F006210C9 /* liblinphonetester.a in Frameworks */,
-				F08F118519C09C6B007D70C2 /* XCTest.framework in Frameworks */,
 				F08F118719C09C6B007D70C2 /* UIKit.framework in Frameworks */,
 				F08F118619C09C6B007D70C2 /* Foundation.framework in Frameworks */,
 			);
@@ -2466,6 +2482,7 @@
 				D3D5126A160B3A8E00946DF8 /* WizardViews.xib */,
 				6E360D381B10DFD1009A5D55 /* SMSButton.h */,
 				6E360D391B10DFD1009A5D55 /* SMSButton.m */,
+				C6863C8C1AF5608300652820 /* WizardViews_2.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2809,6 +2826,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C681BB1E1AE8223A0063B3A5 /* image caspian new graphics */,
 				D3C714B2159DB84400705B8E /* hold.wav */,
 				F0B4FB5C1A65550B00637027 /* Images.xcassets */,
 				F0B89C2318DC90850050B60E /* images */,
@@ -2840,16 +2858,16 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6EE56D451B25CA5100D60D4A /* libc++.dylib */,
+				6EE56D461B25CA5100D60D4A /* Fabric.framework */,
+				6EE56D471B25CA5100D60D4A /* Crashlytics.framework */,
 				6E503A731B09DBA30081DB97 /* CoreData.framework */,
 				26DB69881B015019006AD5C9 /* StoreKit.framework */,
-				26DB695F1B01443A006AD5C9 /* Bolts.framework */,
-				26DB695D1B014425006AD5C9 /* Parse.framework */,
 				26DB69371B013BEB006AD5C9 /* Social.framework */,
 				26DB69351B013BE1006AD5C9 /* Accounts.framework */,
 				26DB69301B013B6F006AD5C9 /* CoreLocation.framework */,
 				F0B026F21AA710AF00FF49F7 /* libiconv.dylib */,
 				F05BAA611A5D594E00411815 /* libz.dylib */,
-				26CE801E1ACFE8EB00FC7606 /* Crashlytics.framework */,
 				22B5F03410CE6B2F00777D97 /* AddressBook.framework */,
 				22B5EFA210CE50BD00777D97 /* AddressBookUI.framework */,
 				22405EED1600B4E400B92522 /* AssetsLibrary.framework */,
@@ -2890,7 +2908,6 @@
 				22509041196BD902007863F6 /* libopenh264.a */,
 				22AF73C11754C0D000BE8398 /* libopus.a */,
 				220FAD2C10765B400068D98F /* libortp.a */,
-				1FE76362DA6217E7341ED1DF /* libPods-KifTests.a */,
 				57B0E35F173C010400A476B8 /* libpolarssl.a */,
 				F0BB8C34193624C800974404 /* libresolv.9.dylib */,
 				22D1B68012A3E0BE001AE361 /* libresolv.dylib */,
@@ -2915,7 +2932,6 @@
 				F0181B6B18BF7B1200A9A357 /* SenTestingKit.framework */,
 				2264B6D111200342002C2C53 /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				F03A9B3318C0CF7000C4D7FE /* XCTest.framework */,
 				F03A9B7E18C0D9C900C4D7FE /* libcunit.a */,
 			);
 			name = Frameworks;
@@ -2955,6 +2971,20 @@
 			);
 			name = Managers;
 			sourceTree = "<group>";
+		};
+		C681BB1E1AE8223A0063B3A5 /* image caspian new graphics */ = {
+			isa = PBXGroup;
+			children = (
+				C6BECC691B0F2BA400A6B703 /* signup_back_default.png */,
+				C681BB1F1AE822760063B3A5 /* welcome.png */,
+				C6AD589D1AF26C4B00DD5375 /* welcome-568h@2x.png */,
+				C6AD589E1AF26C4B00DD5375 /* welcome@2x.png */,
+				C681BB251AE825B90063B3A5 /* original.png */,
+				C681BB231AE825090063B3A5 /* welcome_signup_default.png */,
+				C681BB211AE823C60063B3A5 /* welcome_login_default.png */,
+			);
+			name = "image caspian new graphics";
+			sourceTree = "<unknown>";
 		};
 		D326483415887D4400930C67 /* Utils */ = {
 			isa = PBXGroup;
@@ -3993,6 +4023,7 @@
 				D3F83F20158205A100336684 /* speaker_on_default.png in Resources */,
 				D3F83F22158205A100336684 /* speaker_on_over.png in Resources */,
 				F01A77EB18ED989B00E287CA /* shortring.caf in Resources */,
+				C681BB221AE823C60063B3A5 /* welcome_login_default.png in Resources */,
 				D3F83F24158205A100336684 /* video_off_default.png in Resources */,
 				6E5767B61B0AEEEA0060D464 /* SMSTableViewCell.xib in Resources */,
 				D3F83F26158205A100336684 /* video_off_over.png in Resources */,
@@ -4028,6 +4059,7 @@
 				D3F83F6A1582223B00336684 /* numpad_nine_over.png in Resources */,
 				D3F83F6C1582223B00336684 /* numpad_sharp_default.png in Resources */,
 				D3F83F6E1582223B00336684 /* numpad_sharp_over.png in Resources */,
+				C681BB201AE822760063B3A5 /* welcome.png in Resources */,
 				D3F83F721582223B00336684 /* numpad_star_default.png in Resources */,
 				26E7F37E1A81709F0033D3C0 /* 3-hover.png in Resources */,
 				26E7F3A71A81709F0033D3C0 /* delete.png in Resources */,
@@ -4193,12 +4225,14 @@
 				D350F21E15A43D3400149E54 /* setup_back_over.png in Resources */,
 				2634D3581A83D5FD006533C5 /* smilie_64_football.png in Resources */,
 				D350F22015A43D3400149E54 /* setup_cancel_default.png in Resources */,
+				C681BB261AE825B90063B3A5 /* original.png in Resources */,
 				D350F22215A43D3400149E54 /* setup_cancel_over.png in Resources */,
 				D350F22415A43D3400149E54 /* field_background.png in Resources */,
 				26E7F3CC1A81709F0033D3C0 /* Plus.png in Resources */,
 				2634D35E1A83D5FD006533C5 /* smilie_64_icetea.png in Resources */,
 				D350F22615A43D3400149E54 /* setup_start_default.png in Resources */,
 				26E7F3B21A81709F0033D3C0 /* linphone_splashscreen.png in Resources */,
+				C6BECC6A1B0F2BA400A6B703 /* signup_back_default.png in Resources */,
 				D350F22815A43D3400149E54 /* setup_start_over.png in Resources */,
 				D350F22C15A43D3400149E54 /* setup_welcome_logo.png in Resources */,
 				D35406F715A47E9E007E7E81 /* button_background_default.png in Resources */,
@@ -4396,6 +4430,7 @@
 				F070E6371A2622EC00E17AFD /* incall_padding_right_landscape.png in Resources */,
 				D3A74F1E15C69392001500B9 /* options_selected~ipad.png in Resources */,
 				26E7F3AA1A81709F0033D3C0 /* dialer-hover.png in Resources */,
+				C6AD58A01AF26C4B00DD5375 /* welcome@2x.png in Resources */,
 				D3A74F2015C69392001500B9 /* options_transfer_default~ipad.png in Resources */,
 				D3A74F2215C69392001500B9 /* options_transfer_disabled~ipad.png in Resources */,
 				26E7F3891A81709F0033D3C0 /* 7.png in Resources */,
@@ -4417,6 +4452,7 @@
 				D3A74F3415C69392001500B9 /* settings_over~ipad.png in Resources */,
 				D3A74F3615C69392001500B9 /* settings_selected_landscape~ipad.png in Resources */,
 				D3A74F3815C69392001500B9 /* settings_selected~ipad.png in Resources */,
+				C681BB241AE825090063B3A5 /* welcome_signup_default.png in Resources */,
 				D3A74F3A15C69392001500B9 /* speaker_off_default~ipad.png in Resources */,
 				D3A74F3C15C69392001500B9 /* speaker_off_disabled~ipad.png in Resources */,
 				26E7F3C91A81709F0033D3C0 /* phone.png in Resources */,
@@ -4558,6 +4594,7 @@
 				D3D5124E160B213900946DF8 /* setup_cancel_default~ipad.png in Resources */,
 				D3D51250160B213900946DF8 /* setup_cancel_over~ipad.png in Resources */,
 				D3D51255160B35CB00946DF8 /* chat_message_background.9.png in Resources */,
+				C6863C8D1AF5608300652820 /* WizardViews_2.xib in Resources */,
 				D3D51257160B35CB00946DF8 /* chat_message_background.9@2x.png in Resources */,
 				D3D5126C160B3A8E00946DF8 /* WizardViews.xib in Resources */,
 				26E7F3B31A81709F0033D3C0 /* linphone_splashscreen@2x.png in Resources */,
@@ -4593,6 +4630,7 @@
 				D3D52A851614495300DEB00A /* decline_default_landscape~ipad.png in Resources */,
 				D3D52A871614495300DEB00A /* decline_default~ipad.png in Resources */,
 				D3D52A891614495300DEB00A /* decline_over_landscape~ipad.png in Resources */,
+				C6AD589F1AF26C4B00DD5375 /* welcome-568h@2x.png in Resources */,
 				2634D3521A83D5FD006533C5 /* smilie_64_balloons.png in Resources */,
 				D3D52A8B1614495300DEB00A /* decline_over~ipad.png in Resources */,
 				D37E3ED01619DCC50087659A /* licenses.html in Resources */,
@@ -4707,7 +4745,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 33dd028ded3a518de0afb500f5a3839a2af9f021 00be292e53678c94c0057937e1509ff25df44b4ecac3369157624a267c41e3e2   ";
+			shellScript = "./Fabric.framework/run 33dd028ded3a518de0afb500f5a3839a2af9f021 00be292e53678c94c0057937e1509ff25df44b4ecac3369157624a267c41e3e2";
 		};
 		63DCC71D1A07B08E00916627 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5395,7 +5433,7 @@
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = linphone;
-				PROVISIONING_PROFILE = "971784ec-3fd1-4285-b1b6-44e86cf9b3f7";
+				PROVISIONING_PROFILE = "a63dc8db-824b-4d9d-8af6-82b3ca61c77e";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = (
@@ -5444,8 +5482,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CASPIAN MARKETS LTD (G4P9S2V6QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CASPIAN MARKETS LTD (G4P9S2V6QP)";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
@@ -5482,7 +5520,7 @@
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = linphone;
-				PROVISIONING_PROFILE = "971784ec-3fd1-4285-b1b6-44e86cf9b3f7";
+				PROVISIONING_PROFILE = "ee645e0b-5ab1-439b-997a-b12e09c73a14";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = (
@@ -5530,8 +5568,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CASPIAN MARKETS LTD (G4P9S2V6QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CASPIAN MARKETS LTD (G4P9S2V6QP)";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
@@ -5568,7 +5606,7 @@
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = linphone;
-				PROVISIONING_PROFILE = "971784ec-3fd1-4285-b1b6-44e86cf9b3f7";
+				PROVISIONING_PROFILE = "ee645e0b-5ab1-439b-997a-b12e09c73a14";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = (
@@ -5617,8 +5655,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CASPIAN MARKETS LTD (G4P9S2V6QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CASPIAN MARKETS LTD (G4P9S2V6QP)";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
@@ -5655,7 +5693,7 @@
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = linphone;
-				PROVISIONING_PROFILE = "971784ec-3fd1-4285-b1b6-44e86cf9b3f7";
+				PROVISIONING_PROFILE = "ee645e0b-5ab1-439b-997a-b12e09c73a14";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = (

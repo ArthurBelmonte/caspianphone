@@ -240,8 +240,4 @@ static UICompositeViewDescription *compositeDescription = nil;
     return compositeDescription;
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
-
 @end

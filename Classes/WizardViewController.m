@@ -40,6 +40,8 @@ typedef enum _ViewElement {
     ViewElement_Username_Error      = 404
 } ViewElement;
 
+static NSString *caspianCountryName = @"uk.co.onecallcaspian.phone.countryName";
+static NSString *caspianCountryCode = @"uk.co.onecallcaspian.phone.countryCode";
 static NSString *caspianPhoneNumber = @"uk.co.onecallcaspian.phone.phoneNumber";
 static NSString *caspianPasswordKey = @"uk.co.onecallcaspian.phone.password";
 static NSString *caspianDomain      = @"uk.co.onecallcaspian.phone.domain";
@@ -101,6 +103,9 @@ extern NSString *caspianErrorDomain;
 @synthesize activateAccountView;
 @synthesize provisionedAccountView;
 @synthesize waitView;
+@synthesize logInView;
+@synthesize welcomeView2;
+@synthesize countryLoginView;
 
 @synthesize cancelButton;
 @synthesize backButton;
@@ -179,6 +184,9 @@ extern NSString *caspianErrorDomain;
     self = [super initWithNibName:@"WizardViewController" bundle:[NSBundle mainBundle]];
     if (self != nil) {
         [[NSBundle mainBundle] loadNibNamed:@"WizardViews"
+                                      owner:self
+                                    options:nil];
+        [[NSBundle mainBundle] loadNibNamed:@"WizardViews_2"
                                       owner:self
                                     options:nil];
         self->historyViews = [[NSMutableArray alloc] init];
@@ -278,6 +286,14 @@ extern NSString *caspianErrorDomain;
     [_flagLoadingSignUpActivityIndicator release];
     [_countryFlagForgotPasswordImage release];
     [_flagLoadingForgotPasswordActivityIndicator release];
+    [welcomeView2 release];
+    [logInView release];
+    [_phoneNumberNextSignInToolbar release];
+    [_numKeypadDoneSignInToolbar release];
+    [_dismissKeyboardButton release];
+    [countryLoginView release];
+    
+    [_countryPickerLoginNextToolbar release];
     [super dealloc];
 }
 
@@ -366,6 +382,9 @@ static UICompositeViewDescription *compositeDescription = nil;
         [LinphoneUtils adjustFontSize:provisionedAccountView mult:2.22f];
     }
     
+    self.countryNameLoginViewField.inputView = self.countryPickerView;
+    self.countryNameLoginViewField.inputAccessoryView = self.countryPickerLoginNextToolbar;
+    
     self.countryNameSignUpField.inputView = self.countryPickerView;
     self.countryNameSignUpField.inputAccessoryView = self.countryPickerDoneToolbar;
     self.phoneNumberSignUpField.inputAccessoryView = self.phoneNumberNextToolbar;
@@ -374,7 +393,8 @@ static UICompositeViewDescription *compositeDescription = nil;
     self.countryNameForgotPasswordField.inputView = self.countryPickerView;
     self.countryNameForgotPasswordField.inputAccessoryView = self.countryPickerDoneToolbar;
     
-    self.phoneNumberRegisterField.inputAccessoryView = self.numKeypadDoneToolbar;
+    self.phoneNumberRegisterField.inputAccessoryView = self.phoneNumberNextSignInToolbar;
+    //self.passwordRegisterField.inputAccessoryView = self.numKeypadDoneSignInToolbar;
     self.activationCodeActivateField.inputAccessoryView = self.numKeypadDoneToolbar;
     self.passwordFinishField.inputView = self.dummyView;
     self.phoneNumberForgotPasswordField.inputAccessoryView = self.numKeypadDoneToolbar;
@@ -546,14 +566,27 @@ static UICompositeViewDescription *compositeDescription = nil;
 - (void)fillCredentials {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
+    NSString *countryCode = [userDefaults objectForKey:caspianCountryCode];
     NSString *phoneNumber = [userDefaults objectForKey:caspianPhoneNumber];
     NSString *password    = [userDefaults objectForKey:caspianPasswordKey];
-    NSString *domain      = [userDefaults objectForKey:caspianDomain];
+    //NSString *domain      = [userDefaults objectForKey:caspianDomain];
+    
+    if (phoneNumber == NULL) {
+        self.phoneNumberRegisterField.text = countryCode;
+    } else {
+        self.phoneNumberRegisterField.text = phoneNumber;
+        self.passwordRegisterField.text = password;
+        //self.domainRegisterField.text = domain.length != 0 ? domain : [[LinphoneManager instance] caspianDomainIp];
+        self.domainRegisterField.text = [[LinphoneManager instance] caspianDomainIp];
+    }
+
+    //NSString *domain      = [userDefaults objectForKey:caspianDomain];
 
     self.phoneNumberRegisterField.text = phoneNumber;
     self.passwordRegisterField.text = password;
     //self.domainRegisterField.text = domain.length != 0 ? domain : [[LinphoneManager instance] caspianDomainIp];
     self.domainRegisterField.text = [[LinphoneManager instance] caspianDomainIp];
+
 }
 
 - (NSDictionary *)countryByPhoneNumber:(NSString *)phoneNUmber {
@@ -635,8 +668,20 @@ static UICompositeViewDescription *compositeDescription = nil;
     [[LinphoneManager instance] lpConfigSetBool:(view != signInView || back) forKey:@"animations_preference"];
     if (view == signInView) {
         if (!back) {
-            [self fillCredentials];
+            //[self fillCredentials];
         }
+    } else if (view == countryLoginView) {
+        if (!back) {
+            waitView.hidden = NO;
+            [self pullCountriesWithCompletion:^{
+               waitView.hidden = YES;
+            [self.countryNameLoginViewField becomeFirstResponder];
+            }];
+        }
+    } else if (view == logInView) {
+        if (!back) {
+                [self fillCredentials];
+            }
     } else if (view == signUpView) {
         [self cleanUpSignUpView];
 
@@ -653,8 +698,12 @@ static UICompositeViewDescription *compositeDescription = nil;
     } else if (view == askPhoneNumberView) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *phoneNumber = [userDefaults objectForKey:caspianPhoneNumber];
-
-        self.phoneNumberAskPhoneNumberField.text = phoneNumber;
+        
+        waitView.hidden = NO;
+        [self pullCountriesWithCompletion:^{
+            waitView.hidden = YES;
+            self.phoneNumberAskPhoneNumberField.text = phoneNumber;
+        }];
     } else if (view == forgotPasswordView) {
         waitView.hidden = NO;
         [self pullCountriesWithCompletion:^{
@@ -706,7 +755,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 - (BOOL)addProxyConfig:(NSString*)username password:(NSString*)password domain:(NSString*)domain withTransport:(NSString*)transport {
     LinphoneCore* lc = [LinphoneManager getLc];
 	LinphoneProxyConfig* proxyCfg = linphone_core_create_proxy_config(lc);
-	NSString* server_address = domain;
+	//NSString* server_address = domain;
 
     NSString *uriSuffix = [NSString stringWithFormat:@"%@:5060;transport=tcp", domain];
     linphone_proxy_config_set_server_addr(proxyCfg, [uriSuffix cStringUsingEncoding:[NSString defaultCStringEncoding]]);
@@ -721,9 +770,11 @@ static UICompositeViewDescription *compositeDescription = nil;
     linphone_address_set_username(linphoneAddress, normalizedUserName);
 
     if( domain && [domain length] != 0) {
+        /*
 		if( transport != nil ){
 			server_address = [NSString stringWithFormat:@"%@;transport=%@", server_address, [transport lowercaseString]];
 		}
+        */
         // when the domain is specified (for external login), take it as the server address
         /*
          This line of code cuts off specefied transport type in uri from xml config
@@ -919,6 +970,9 @@ static UICompositeViewDescription *compositeDescription = nil;
 #pragma mark - UITextFieldDelegate Functions
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.passwordRegisterField) {
+        [self loginInMethod];
+    } else
     if (textField == self.firstNameSignUpField) {
         [self.lastNameSignUpField becomeFirstResponder];
     } else {
@@ -934,7 +988,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [self checkNextStep];
 }
-
+    
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (textField == self.countryNameSignUpField || textField == self.passwordFinishField) {
         return NO;
@@ -982,6 +1036,37 @@ static UICompositeViewDescription *compositeDescription = nil;
     }
 }
 
+-(void) loginInMethod {
+    NSString *phone    = self.phoneNumberRegisterField.text;
+    NSString *password = self.passwordRegisterField.text;
+    NSString *domain   = self.domainRegisterField.text;
+    
+    NSMutableString *errors = [NSMutableString string];
+    if ([phone length] == 0) {
+        
+        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"Please enter a username.\n", nil)]];
+    }
+    
+    /*
+     if ([domain length] == 0) {
+     [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"Please enter a domain.\n", nil)]];
+     }
+     */
+    
+    if([errors length]) {
+        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check error(s)",nil)
+                                                            message:[errors substringWithRange:NSMakeRange(0, [errors length] - 1)]
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                  otherButtonTitles:nil,nil];
+        [errorView show];
+        [errorView release];
+    } else {
+        [self checkIsSameUserSigningIn:phone];
+        [self.waitView setHidden:false];
+        [self addProxyConfig:[[LinphoneManager instance] removeUnneededPrefixes:phone] password:password domain:domain withTransport:@"tcp"];
+    }
+}
 
 #pragma mark - Action Functions
 
@@ -1081,35 +1166,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 }
 
 - (IBAction)onSignInExternalClick:(id)sender {
-    NSString *phone    = self.phoneNumberRegisterField.text;
-    NSString *password = self.passwordRegisterField.text;
-    NSString *domain   = self.domainRegisterField.text;
-    
-    NSMutableString *errors = [NSMutableString string];
-    if ([phone length] == 0) {
-        
-        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"Please enter a username.\n", nil)]];
-    }
-    
-    /*
-    if ([domain length] == 0) {
-        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"Please enter a domain.\n", nil)]];
-    }
-    */
-    
-    if([errors length]) {
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check error(s)",nil)
-                                                            message:[errors substringWithRange:NSMakeRange(0, [errors length] - 1)]
-                                                           delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
-                                                  otherButtonTitles:nil,nil];
-        [errorView show];
-        [errorView release];
-    } else {
-        [self checkIsSameUserSigningIn:phone];
-        [self.waitView setHidden:false];
-        [self addProxyConfig:[[LinphoneManager instance] removeUnneededPrefixes:phone] password:password domain:domain withTransport:@"tcp"];
-    }
+    [self loginInMethod];
 }
 
 - (IBAction)onSignInClick:(id)sender {
@@ -1212,6 +1269,9 @@ static UICompositeViewDescription *compositeDescription = nil;
     [self.firstNameSignUpField becomeFirstResponder];
 }
 
+- (IBAction)onPhoneNumberSignInNextTap:(id)sender {
+    [self.passwordRegisterField becomeFirstResponder];
+}
 - (IBAction)onDoneNumKeypad:(id)sender {
     [self.view endEditing:YES];
 }
@@ -1274,7 +1334,7 @@ static UICompositeViewDescription *compositeDescription = nil;
     NSDictionary *country = [self countryByPhoneNumber:self.phoneNumberAskPhoneNumberField.text];
     NSString *countryCode = country[caspianCountryObjectFieldCode];
     if (countryCode) {
-        NSString *phoneNumber = [self.phoneNumberAskPhoneNumberField.text stringByReplacingOccurrencesOfString:countryCode withString:@""];
+        NSString *phoneNumber = [self.phoneNumberAskPhoneNumberField.text substringFromIndex:countryCode.length];
         [self recoverPasswordForPhoneNumber:phoneNumber andCountryCode:countryCode];
     } else {
         [self alertErrorMessageEmptyCountry];
@@ -1295,6 +1355,36 @@ static UICompositeViewDescription *compositeDescription = nil;
     [self onBackButtonClicked:sender];
 }
 
+- (IBAction)onLogInClick:(id)sender {
+    [self changeView:countryLoginView back:FALSE animation:TRUE];
+}
+
+- (IBAction)onNextLogInClick:(id)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *country = [userDefaults objectForKey:caspianCountryName];
+    NSString *countryCode = [userDefaults objectForKey:caspianCountryCode];
+    
+    countryCode = self.selectedCountryCode;
+    country = self.countryNameLoginViewField.text;
+    
+    NSLog(@"Переменная country = %@, ", country);
+    NSLog(@"Переменная countryCode = %@, ", countryCode);
+    
+    [userDefaults setObject:countryCode forKey:caspianCountryCode];
+    [userDefaults setObject:country forKey:caspianCountryName];
+    
+    [userDefaults synchronize];
+    
+    [self changeView:logInView back:FALSE animation:TRUE];
+}
+
+- (IBAction)onDismissKeyboardButton:(id)sender {
+    if ([self.phoneNumberRegisterField isFirstResponder]) {
+        [self.phoneNumberRegisterField resignFirstResponder];
+    } else if ([self.passwordRegisterField isFirstResponder]) {
+        [self.passwordRegisterField resignFirstResponder];
+    }
+}
 
 #pragma mark - UIAlertViewDelegate
 
@@ -1612,6 +1702,7 @@ static UICompositeViewDescription *compositeDescription = nil;
                     NSDictionary *countries = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
                                                                               options:NSJSONReadingMutableContainers
                                                                                 error:&jsonError];
+                    [jsonString release];
                     if (!jsonError) {
                         completion();
                         [weakSelf fillCountryAndCodeArray:countries];
@@ -1658,9 +1749,31 @@ static UICompositeViewDescription *compositeDescription = nil;
 }
 
 - (void)fillCountryAndCodeArray:(NSDictionary *)countries {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *country = [userDefaults objectForKey:caspianCountryName];
+    
     self.countryAndCode = countries[caspianCountriesListTopKey];
+    if (currentView == countryLoginView && country != NULL) {
+        self.currentCountryRow = [self indexOfCountryWithName:country];
+    } else {
     self.currentCountryRow = [self indexOfCountryWithName:caspianCountryDefaultName];
+    }
 }
+#pragma mark - LogIn (Sign IN)
+
+- (void) procedureCountryFill {
+ /*
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *countryCode = [userDefaults objectForKey:caspianCountryCode];
+    NSString *lastPhoneNumber = [userDefaults objectForKey:caspianPhoneNumber];
+    
+    if (lastPhoneNumber == NULL) {
+        self.phoneNumberRegisterField.text = countryCode;
+    } else {
+        [self fillCredentials];
+    } */
+}
+
 
 #pragma mark - Sign Up
 
@@ -1709,6 +1822,8 @@ static UICompositeViewDescription *compositeDescription = nil;
     
     self.countryCodeSignUpField.text = self.selectedCountryCode.length > 0 ? fullCountryCode : @"";
     self.countryNameSignUpField.text = country[caspianCountryObjectFieldName];
+    
+    self.countryNameLoginViewField.text = self.countryNameSignUpField.text;
     
     self.countryCodeForgotPasswordField.text = self.countryCodeSignUpField.text;
     self.countryNameForgotPasswordField.text = self.countryNameSignUpField.text;

@@ -28,11 +28,4 @@
     return @"SMSTableViewCellIdentifier";
 }
 
-- (void)dealloc {
-    [_profileImageView release];
-    [_nameLabel release];
-    [_messageLabel release];
-    [_dateLabel release];
-    [super dealloc];
-}
 @end
