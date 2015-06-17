@@ -28,13 +28,17 @@
 #import "Utils.h"
 #import "SMSActivationViewController.h"
 #import "SMSTableViewController.h"
+#import "HistoryCell.h"
+#import "FastAddressBook.h"
+#import "CoreDataManager.h"
+#import "History.h"
 
 #include "linphone/linphonecore.h"
 
 static NSString *caspianSMSStatus = @"uk.co.onecallcaspian.phone.smsStatus";
 static NSString *caspianBalanceUrl = @"https://onecallcaspian.co.uk/mobile/credit?phone_number=%@&password=%@";
 
-@interface DialerViewController()
+@interface DialerViewController() <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSOperationQueue *balanceQueue;
 @property (nonatomic, retain) NSNumberFormatter *numberFormatter;
@@ -247,7 +251,11 @@ static UICompositeViewDescription *compositeDescription = nil;
     linphone_core_get_default_proxy([LinphoneManager getLc], &config);
     [self proxyConfigUpdate: config];
     
-    [self showKeypadAnimated:YES];
+    [[CoreDataManager sharedManager] retrieveManagedObject:@"History" predicate:nil sortDescriptors:nil successBlock:^(NSArray *retrievedObjects) {
+        if ([retrievedObjects count] > 0) {
+            [self showKeypadAnimated:YES];
+        }
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -304,6 +312,14 @@ static UICompositeViewDescription *compositeDescription = nil;
     
     UITapGestureRecognizer *tapHideKeypad = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeypadAnimated:)];
     [self.view addGestureRecognizer:tapHideKeypad];
+    
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.allowsSelection = NO;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"HistoryCell" bundle:nil] forCellReuseIdentifier:[HistoryCell reuseIdentifier]];
 }
 
 - (void)showKeypadAnimated:(BOOL)animated
@@ -322,6 +338,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 
 - (void)hideKeypadAnimated:(BOOL)animated
 {
+    [self.addressField resignFirstResponder];
     if (animated) {
         [UIView animateWithDuration:0.7 animations:^{
             self.keypadView.frame = CGRectMake(0, self.view.frame.size.height, self.keypadView.frame.size.width, self.keypadView.frame.size.height);
@@ -536,7 +553,6 @@ static UICompositeViewDescription *compositeDescription = nil;
     UITouch *touch = [[event allTouches] anyObject];
     if ([self.addressField isFirstResponder] && (self.addressField != touch.view) && self.addressField.text.length == 0) {
         [self hideKeypadAnimated:YES];
-        [self.addressField resignFirstResponder];
     }
 }
 
@@ -625,6 +641,30 @@ static UICompositeViewDescription *compositeDescription = nil;
     }
 }
 
+#pragma mark - UITableView data source and delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 110;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:[HistoryCell reuseIdentifier]];
+    
+    return cell;
+}
+
 #pragma mark - New UI
 
 - (void)pullBalanceCompletionBlock:(void(^)(NSString *))block {
@@ -707,6 +747,13 @@ static UICompositeViewDescription *compositeDescription = nil;
 - (void)didTapCallButton
 {
     [self call:self.addressField.text];
+    
+    ABRecordRef contact = [[[LinphoneManager instance] fastAddressBook] getContact:self.addressField.text];
+    History *history = (History *)[[CoreDataManager sharedManager] createManagedObject:@"History"];
+    history.number = [FastAddressBook takePhoneNumberFromAddress:self.addressField.text];
+    history.timeStamp = [NSDate date];
+    history.name = (contact) ? [FastAddressBook getContactDisplayName:contact] : @"Unknown";
+    [[CoreDataManager sharedManager] saveContextSuccessBlock:nil];
 }
 
 #pragma mark -
